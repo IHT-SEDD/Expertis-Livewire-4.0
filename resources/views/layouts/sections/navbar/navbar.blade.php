@@ -76,7 +76,7 @@ $navbarDetached = ($navbarDetached ?? '');
                 <div class="dropdown-divider my-1"></div>
               </li>
               <li>
-                <a class="dropdown-item" href="javascript:void(0);">
+                <a wire:navigate class="dropdown-item" href="{{ url('/profile') }}">
                   <i class="bx bx-user bx-md me-3"></i><span>My Profile</span>
                 </a>
               </li>

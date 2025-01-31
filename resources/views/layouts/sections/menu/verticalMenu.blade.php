@@ -15,6 +15,7 @@
   <div class="menu-inner-shadow"></div>
 
   <ul class="menu-inner py-1">
+
     @foreach ($menuData[0]->menu as $menu)
 
       {{-- adding active and open class if child is active --}}
@@ -30,29 +31,29 @@
       @php
       $activeClass = null;
       $currentRouteName = Route::currentRouteName();
-
       if ($currentRouteName === $menu->slug) {
-        $activeClass = 'active';
+    $activeClass = 'active';
       }
       elseif (isset($menu->submenu)) {
-        if (gettype($menu->slug) === 'array') {
-          foreach($menu->slug as $slug){
-            if (str_contains($currentRouteName,$slug) and strpos($currentRouteName,$slug) === 0) {
-              $activeClass = 'active open';
-            }
+          if (is_array($menu->submenu)) {
+              foreach ($menu->submenu as $slug) {
+                  if (str_starts_with($currentRouteName, $slug->slug)) {
+                      $activeClass = 'active open';
+                      break;
+                  }
+              }
+          } else {
+              if (str_starts_with($currentRouteName, $menu->slug)) {
+                  $activeClass = 'active open';
+              }
           }
-        }
-        else{
-          if (str_contains($currentRouteName,$menu->slug) and strpos($currentRouteName,$menu->slug) === 0) {
-            $activeClass = 'active open';
-          }
-        }
       }
+
       @endphp
 
       {{-- main menu --}}
       <li class="menu-item {{$activeClass}}">
-        <a href="{{ isset($menu->url) ? url($menu->url) : 'javascript:void(0);' }}" class="{{ isset($menu->submenu) ? 'menu-link menu-toggle' : 'menu-link' }}" @if (isset($menu->target) and !empty($menu->target)) target="_blank" @endif>
+        <a  class="{{ isset($menu->submenu) ? 'menu-link menu-toggle' : 'menu-link' }}" @if (isset($menu->target) and !empty($menu->target)) target="_blank" @endif>
           @isset($menu->icon)
             <i class="{{ $menu->icon }}"></i>
           @endisset

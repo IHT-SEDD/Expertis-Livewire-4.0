@@ -1,6 +1,9 @@
 {
   "menu": [
     {
+      "menuHeader": "Personalia"
+    },
+    {
       "url": "/",
       "name": "Dashboards",
       "icon": "menu-icon tf-icons bx bx-home-smile",
@@ -11,19 +14,14 @@
       ],
       "submenu": [
         {
-          "url": "/",
-          "name": "Analytics",
-          "slug": "dashboard-analytics"
+          "url": "/employee",
+          "name": "Data Pegawai",
+          "slug": "employee"
         },
         {
-          "url": "https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/dashboard/crm",
-          "name": "CRM",
-          "slug": "dashboard-crm",
-          "target": "_blank",
-          "badge": [
-            "label-primary fs-tiny",
-            "Pro"
-          ]
+          "url": "/role",
+          "name": "Jabatan",
+          "slug": "role"
         },
         {
           "url": "https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/app/ecommerce/dashboard",

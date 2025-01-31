@@ -5,7 +5,9 @@
   'resources/assets/vendor/libs/popper/popper.js',
   'resources/assets/vendor/js/bootstrap.js',
   'resources/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js',
-  'resources/assets/vendor/js/menu.js'
+  'resources/assets/vendor/js/menu.js',
+  'resources/assets/js/pages-account-settings-account.js'
+
 ])
 
 @yield('vendor-script')

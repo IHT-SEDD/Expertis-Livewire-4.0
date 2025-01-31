@@ -43,14 +43,21 @@ use App\Http\Controllers\form_elements\InputGroups;
 use App\Http\Controllers\form_layouts\VerticalForm;
 use App\Http\Controllers\form_layouts\HorizontalForm;
 use App\Http\Controllers\tables\Basic as TablesBasic;
-use App\Livewire\Login;
-
-Route::get('/login', Login::class)->name('login');
-
 
 // Main Page Route
 // Route::get('/', [Analytics::class, 'index'])->name('dashboard-analytics');
 
 
-Route::get('/login', Login::class)->name('login')->middleware('guest');
-Route::get('/register', \App\Livewire\Register::class);
+Route::middleware('guest')->group(function () {
+  Route::get('/login', \App\Livewire\Login::class)->name('login');
+  Route::get('/register', \App\Livewire\Register::class);
+});
+
+
+Route::middleware('auth')->group(function () {
+  Route::get('/', \App\Livewire\Dashboard::class)->name('dashboard');
+  Route::get('/employee', \App\Livewire\Personalia\Employee::class)->name('employee');
+  Route::get('/role', \App\Livewire\Personalia\Role::class)->name('role');
+  Route::get('/profile', \App\Livewire\Account\Profile::class)->name('profile');
+  Route::get('/register', \App\Livewire\Register::class);
+});
